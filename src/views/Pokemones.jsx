@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-
-function obtenerDataForm (){
-  
-}
+import { useNavigate } from "react-router-dom";
 
 const Pokemones = () => {
 
-  const [names, setNames] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const [names, setNames] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [opcionElegida, setOpcionElegida] = useState(null);
+  const navigate = useNavigate();
+
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -15,20 +16,31 @@ const Pokemones = () => {
         const data = await res.json();
         setNames(data.results);
         setLoading(true);
+        setOpcionElegida(data.results[0].name)
       } catch (error) {
         console.error(error);
       } 
     }
     fetchData();
   }, []);
+
+  function capturarOpcion(e){
+    e.preventDefault();
+    setOpcionElegida(e.target.value);
+  }
+  function usarOpcionNavigate(e){
+    e.preventDefault();
+    navigate(`/pokemones/${opcionElegida}`)
+
+    
+  }
   
- 
   return (
     <main className="pokemonesMain">
       {loading ? (
-        <form id="formulario">
+        <form id="formulario" onSubmit={usarOpcionNavigate} >
         <label>Selecciona un pokemón</label>
-        <select id="opcionElegida">
+        <select id="opcionElegida" onChange={capturarOpcion}>
           {names.map((name, index)=>{
             return <option key={index} value = {name.name}>{name.name}</option>
           })}

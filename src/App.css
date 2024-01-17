@@ -38,7 +38,7 @@
   margin-left: 2rem;
 }
 /* Main styles */
-.homeMain, .pokemonesMain{
+.homeMain, .pokemonesMain, .mainPokeInfo{
   height: 90vh;
   display: flex;
   flex-direction: column;
@@ -78,4 +78,10 @@
   background-color: black;
   cursor: pointer;
 }
-
+/* card style */
+.myCard{
+  border: solid 1px black;
+  height: 50vh;
+  width: 70vw;
+  margin-top: 3rem;
+}
