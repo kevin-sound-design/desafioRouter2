@@ -15,7 +15,9 @@ const NavBar = () => {
         </NavLink>
       </div>
       <div className='iconoPagina'>
-        <img src="https://cdn.icon-icons.com/icons2/2248/PNG/512/pokemon_go_icon_138275.png" alt="icono-pokemon" />
+        <NavLink to="/">
+          <img src="https://cdn.icon-icons.com/icons2/2248/PNG/512/pokemon_go_icon_138275.png" alt="icono-pokemon" />
+        </NavLink>
       </div>
     </nav>
   )
